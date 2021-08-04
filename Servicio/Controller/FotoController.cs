@@ -22,7 +22,11 @@ namespace Servicio.Controller
         {
             repositorio = repo;
         }
-
+        /// <summary>
+        /// listado de fotos asociadas a un hotel
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpGet("listar/{hotelID:int}")]
         public IActionResult Listar(int hotelID)
         {
@@ -30,6 +34,12 @@ namespace Servicio.Controller
             return Ok(fotos);
         }
 
+
+        /// <summary>
+        /// obtener foto po id
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpGet("{fotoID:int}")]
         public IActionResult ObtenerFoto(int fotoId) {
             var foto = repositorio.Obtener(fotoId);
@@ -39,6 +49,11 @@ namespace Servicio.Controller
             return File(outputStream, "image/jpeg");
         }
 
+        /// <summary>
+        /// eliminar foto por por id
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpDelete("{fotoID:int}")]
         public IActionResult Eliminar(int fotoID)
         {
@@ -46,6 +61,11 @@ namespace Servicio.Controller
             return Ok();
         }
 
+        /// <summary>
+        /// insertar una foto 
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpPost("{hotelId:int}")]
         public IActionResult Insertar(int hotelId, IFormFile foto)
         {
