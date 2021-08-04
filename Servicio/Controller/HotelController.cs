@@ -20,6 +20,11 @@ namespace Servicio.Controller
             repositorio = repo;
         }
 
+        /// <summary>
+        /// Listado de Hoteles sin filtros
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Listar()
         {
@@ -27,6 +32,11 @@ namespace Servicio.Controller
             return Ok(hoteles);
         }
 
+        /// <summary>
+        /// Listado de Hoteles filtrados por calificacion
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpGet("calificacion/{calificacion:int}")]
         public IActionResult Listar(int calificacion)
         {
@@ -34,6 +44,11 @@ namespace Servicio.Controller
             return Ok(hoteles);
         }
 
+        /// <summary>
+        /// Listado de Hoteles filtrados por categoria
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpGet("categoria/{categoria:int}")]
         public IActionResult ListarPorCategoria(int categoria)
         {
@@ -41,6 +56,11 @@ namespace Servicio.Controller
             return Ok(hoteles);
         }
 
+        /// <summary>
+        /// Listado de Hoteles ordenados ascedente y descendentemente
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpGet("precio/{orden:regex(^(asc|desc)$)}")]
         public IActionResult ListarPorPrecio(string orden)
         {
@@ -48,6 +68,11 @@ namespace Servicio.Controller
             return Ok(hoteles);
         }
 
+        /// <summary>
+        /// Metodo para crear un hotel
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Crear(Hotel hotel)
         {
@@ -59,6 +84,11 @@ namespace Servicio.Controller
             return NotFound();
         }
 
+        /// <summary>
+        /// Metodo para editar un hotel
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpPut("{hotelID:int}")]
         public IActionResult Editar(int hotelID, Hotel hotel)
         {
@@ -66,16 +96,16 @@ namespace Servicio.Controller
             return Ok();
         }
 
+        /// <summary>
+        /// Elimina un hotel
+        /// </summary>
+        /// <param name="hotelID"></param>
+        /// <returns></returns>
         [HttpDelete("{hotelID:int}")]
         public IActionResult Eliminar(int hotelID)
         {
             repositorio.Eliminar(hotelID);
             return Ok();
-        }
-
-        public IActionResult Obtener()
-        {
-            return null;
         }
     }
 }
