@@ -26,6 +26,7 @@ namespace Servicio
             services.AddDbContext<HotelContext>(options =>
                                                     options.UseSqlServer(Configuration["ConnectionStrings:HotelConection"]));
             services.AddScoped<IRepoHotel, RepoHotel>();
+            services.AddScoped<IRepoFotos, RepoFotos>();
             services.AddControllers();
         }
 
